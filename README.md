@@ -3,8 +3,8 @@
 The program can be slow!!
 
 ## LINKS FOR PROXIES!
-https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4&timeout=10000&country=all
-https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks5&timeout=10000&country=all
+https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4&timeout=10000&country=all \n
+https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks5&timeout=10000&country=all \n
 https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all
 
 
