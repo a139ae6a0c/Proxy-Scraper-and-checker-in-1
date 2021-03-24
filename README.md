@@ -1,6 +1,10 @@
 # Proxy-Scraper/checker in 1
 
 The program can be slow!!
+## DLLS
+###### https://github.com/csharp-leaf/Leaf.xNet
+###### https://github.com/tomakita/Colorful.Console
+
 
 ## LINKS FOR PROXIES!
 ###### https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4&timeout=10000&country=all 
