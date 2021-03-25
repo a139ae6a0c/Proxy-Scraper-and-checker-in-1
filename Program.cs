@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +15,7 @@ namespace Proxiessourcecode
 {
     class Program
     {
-       public static string type = "";
+        public static string type = "";
         static void Main(string[] args)
         {
             Console.Title = "Proxy scraper/checker - Created by Vanix#9999";
@@ -34,6 +34,16 @@ namespace Proxiessourcecode
                 Main(args);
             }
             Console.Clear();
+            DiscordRPC.RPC();
+            string folder = Directory.GetCurrentDirectory() + "\\Results\\" + DateTime.Now.ToString("H.mm.ss - dddd, dd");
+            if(!Directory.Exists("Results"))
+            {
+                Directory.CreateDirectory("Results");
+            }
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
             if (!File.Exists("Proxy.txt"))
             {
                 var file = File.Create("Proxy.txt");
@@ -41,6 +51,8 @@ namespace Proxiessourcecode
             }
             Design.Logo();
             Console.WriteLine("!! All of your Proxies sources should be in Proxy.txt !!");
+
+
             if (new FileInfo("Proxy.txt").Length == 0)
             {
                 Console.WriteLine("File is empty!!");
@@ -55,7 +67,7 @@ namespace Proxiessourcecode
                 {
                     try {
                         Match Proxies = (Match)val;
-                        File.WriteAllText("Proxies-ALL.txt", Proxies.Value +  Environment.NewLine);
+                        File.WriteAllText(folder + "\\Proxies-ALL.txt", Proxies.Value +  Environment.NewLine);
                         try
                         {
                             if (type.Contains("http"))
@@ -79,15 +91,16 @@ namespace Proxiessourcecode
                             if (text2.Contains("Your IP address"))
                             {
  
-                                string text23 = Regex.Match(text2, "<span class=\"country_name\">(.*?)</span>").Groups[1].Value.ToString();
-                                Console.Write("[+] " + Proxies.Value + " - " + text23 + "\n", Color.Green);
-                                File.WriteAllText("Proxies-CHECKED-WORKING.txt", Proxies.Value + Environment.NewLine);
+                                string location = Regex.Match(text2, "<span class=\"country_name\">(.*?)</span>").Groups[1].Value.ToString();
+                                string region = Regex.Match(text2, "<span class=\"region_name\">(.*?)</span>").Groups[1].Value.ToString();
+                                Console.Write("[+] " + Proxies.Value + " - " + location + " - " + region +"\n", Color.DarkGreen);
+                                File.WriteAllText(folder + "\\Proxies-CHECKED-WORKING.txt", Proxies.Value + Environment.NewLine);
                             }
                         }
                         catch(Exception)
                         {
                             Console.Write("[-] " + Proxies.Value + "\n", Color.Red);
-                            File.WriteAllText("Proxies-CHECKED-SHIT.txt", Proxies.Value + Environment.NewLine);
+                            File.WriteAllText(folder + "\\Proxies-CHECKED-SHIT.txt", Proxies.Value + Environment.NewLine);
                         }
        
                     }
