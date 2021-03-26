@@ -17,4 +17,4 @@ The program can be slow!!
 
 
 
-![alt text](https://cdn.discordapp.com/attachments/798475727829598228/824380187277656145/download.png)
+![alt text](https://cdn.discordapp.com/attachments/798475727829598228/825114360081809428/AWN4kwtvCqw3AAAAAElFTkSuQmCC.png)
