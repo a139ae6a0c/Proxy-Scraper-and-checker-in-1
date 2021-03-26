@@ -44,6 +44,8 @@ namespace Proxiessourcecode
                 }
                 try
                 {
+
+
                     foreach (object val in new Regex("(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})(?=[^\\d])\\s*:?\\s*(\\d{2,5})").Matches(req))
                     {
                         Match Proxies = (Match)val;
@@ -62,15 +64,18 @@ namespace Proxiessourcecode
 
                             if (type.Contains("socks5"))
                             {
+
                                 httpRequest.Proxy = Socks5ProxyClient.Parse(Proxies.Value);
                             }
                             httpRequest.Proxy = httpRequest.Proxy;
                             httpRequest.IgnoreProtocolErrors = true;
                             httpRequest.UserAgent = Http.ChromeUserAgent();
                             string text2 = httpRequest.Get("http://ip-api.com/json/", null).ToString();
+                            string region = "";
                             if (text2.Contains("\"status\":\"success\""))
                             {
                                 location = Regex.Match(text2, "\"countryCode\":\"(.*?)\"").Groups[1].Value.ToString();
+                                region = Regex.Match(text2, "\"regionName\":\"(.*?)\"").Groups[1].Value.ToString();
                                 //-------------------
                                 Console.Write("[");
                                 Console.Write("+", Color.DarkGreen);
@@ -79,7 +84,9 @@ namespace Proxiessourcecode
                                 Console.Write(" Status: ");
                                 Console.Write("Good ", Color.Green);
                                 Console.Write(" - Location: ");
-                                Console.WriteLine(location, Color.Green);
+                                Console.Write(location, Color.Green);
+                                Console.Write(" - Region: ");
+                                Console.WriteLine(region, Color.Green);
                                 //-------------------
                                 File.AppendAllText(folder + "\\Proxies-CHECKED-WORKING.txt", Proxies.Value + "\n");
                             }
