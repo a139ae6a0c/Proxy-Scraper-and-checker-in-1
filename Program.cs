@@ -10,6 +10,7 @@ using System.IO;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Net;
 
 
 namespace Proxiessourcecode
@@ -31,14 +32,24 @@ namespace Proxiessourcecode
 
             foreach (string line in File.ReadLines("Proxy.txt"))
             {
+                string req = "";
                Console.Title = "Proxy scraper/checker - Url: " + line +  " - Created by Vanix#9999";
-               var httpRequest = new HttpRequest();
-               string req = httpRequest.Get(line).ToString();
-                foreach (object val in new Regex("(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})(?=[^\\d])\\s*:?\\s*(\\d{2,5})").Matches(req))
+                var httpRequest = new Leaf.xNet.HttpRequest();
+                try
                 {
-                    try {
+                    req = new WebClient().DownloadString(line);
+                }
+                catch(Exception)
+                {
+                }
+                try
+                {
+
+
+                    foreach (object val in new Regex("(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})(?=[^\\d])\\s*:?\\s*(\\d{2,5})").Matches(req))
+                    {
                         Match Proxies = (Match)val;
-                        File.WriteAllText(folder + "\\Proxies-ALL.txt", Proxies.Value +  Environment.NewLine);
+                        File.AppendAllText(folder + "\\Proxies-ALL.txt", Proxies.Value + "\n");
                         try
                         {
                             if (type.Contains("http"))
@@ -58,36 +69,40 @@ namespace Proxiessourcecode
                             httpRequest.Proxy = httpRequest.Proxy;
                             httpRequest.IgnoreProtocolErrors = true;
                             httpRequest.UserAgent = Http.ChromeUserAgent();
-                            string text2 = httpRequest.Get("https://iplocation.com/", null).ToString();
-                            if (text2.Contains("Your IP address"))
+                            string text2 = httpRequest.Get("http://ip-api.com/json/", null).ToString();
+                            if (text2.Contains("\"status\":\"success\""))
                             {
-                                location = Regex.Match(text2, "<span class=\"country_name\">(.*?)</span>").Groups[1].Value.ToString();
+                                location = Regex.Match(text2, "\"countryCode\":\"(.*?)\"").Groups[1].Value.ToString();
                                 //-------------------
-                                Console.Write("[+] " + Proxies.Value, Color.White);
+                                Console.Write("[");
+                                Console.Write("+", Color.DarkGreen);
+                                Console.Write("] ");
+                                Console.Write(Proxies.Value, Color.White);
                                 Console.Write(" Status: ");
                                 Console.Write("Good ", Color.Green);
                                 Console.Write(" - Location: ");
                                 Console.WriteLine(location, Color.Green);
                                 //-------------------
-                                File.WriteAllText(folder + "\\Proxies-CHECKED-WORKING.txt", Proxies.Value + Environment.NewLine);
+                                File.AppendAllText(folder + "\\Proxies-CHECKED-WORKING.txt", Proxies.Value + "\n");
                             }
                         }
-                        catch(Exception)
+                        catch (Exception)
                         {
                             //-------------------
-                            Console.Write("[-] " + Proxies.Value, Color.White);
+                            Console.Write("[");
+                            Console.Write("-", Color.DarkRed);
+                            Console.Write("] ");
+                            Console.Write(Proxies.Value, Color.White);
                             Console.Write(" Status: ");
                             Console.WriteLine("Failed", Color.DarkRed);
                             //-------------------
-                            File.WriteAllText(folder + "\\Proxies-CHECKED-SHIT.txt", Proxies.Value + Environment.NewLine);
+                            File.AppendAllText(folder + "\\Proxies-CHECKED-SHIT.txt", Proxies.Value + "\n");
                         }
-       
-                    }
-                    catch
-                    {
                     }
                 }
-
+                catch (Exception)
+                {
+                }
 
 
             }
