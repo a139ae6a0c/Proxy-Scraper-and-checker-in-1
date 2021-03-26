@@ -27,8 +27,8 @@ namespace Proxiessourcecode
                     break;
 
                 }
-                Console.WriteLine("Unknown type..");
-                Thread.Sleep(100);
+                Console.WriteLine("Unknown type.. Please try again.");
+                Thread.Sleep(500);
                 Program.Main(args);
             }
             Console.Clear();
