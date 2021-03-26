@@ -11,56 +11,27 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Threading;
 
+
 namespace Proxiessourcecode
 {
     class Program
     {
+        public static  string folder = Directory.GetCurrentDirectory() + "\\Results\\" + DateTime.Now.ToString("H.mm.ss - dddd, dd");
         public static string type = "";
-        static void Main(string[] args)
+        public static string location = "";
+        public static string region = "";
+        public static void Main(string[] args)
         {
             Console.Title = "Proxy scraper/checker - Created by Vanix#9999";
-            for (;;)
-            {
-                Console.WriteLine("Which Type do you want to check? Http/socks4/socks5");
-                type = Console.ReadLine().ToLower();
-                bool check = type.Contains("http") || type.Contains("socks4") || type.Contains("socks5");
-                if (check)
-                {
-                    break;
-
-                }
-                Console.WriteLine("Unknown type..");
-                Thread.Sleep(100);
-                Main(args);
-            }
-            Console.Clear();
-            DiscordRPC.RPC();
-            string folder = Directory.GetCurrentDirectory() + "\\Results\\" + DateTime.Now.ToString("H.mm.ss - dddd, dd");
-            if(!Directory.Exists("Results"))
-            {
-                Directory.CreateDirectory("Results");
-            }
-            if (!Directory.Exists(folder))
-            {
-                Directory.CreateDirectory(folder);
-            }
-            if (!File.Exists("Proxy.txt"))
-            {
-                var file = File.Create("Proxy.txt");
-                file.Close();
-            }
+            // Going to Startup.cs
+            Startup.start(args);
+            // Write Logo on the console  
             Design.Logo();
             Console.WriteLine("!! All of your Proxies sources should be in Proxy.txt !!");
 
-
-            if (new FileInfo("Proxy.txt").Length == 0)
-            {
-                Console.WriteLine("File is empty!!");
-                Console.ReadLine();
-            }
-
             foreach (string line in File.ReadLines("Proxy.txt"))
             {
+               Console.Title = "Proxy scraper/checker - Url: " + line +  " - Created by Vanix#9999";
                var httpRequest = new HttpRequest();
                string req = httpRequest.Get(line).ToString();
                 foreach (object val in new Regex("(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})(?=[^\\d])\\s*:?\\s*(\\d{2,5})").Matches(req))
@@ -90,16 +61,24 @@ namespace Proxiessourcecode
                             string text2 = httpRequest.Get("https://iplocation.com/", null).ToString();
                             if (text2.Contains("Your IP address"))
                             {
- 
-                                string location = Regex.Match(text2, "<span class=\"country_name\">(.*?)</span>").Groups[1].Value.ToString();
-                                string region = Regex.Match(text2, "<span class=\"region_name\">(.*?)</span>").Groups[1].Value.ToString();
-                                Console.Write("[+] " + Proxies.Value + " - " + location + " - " + region +"\n", Color.DarkGreen);
+                                location = Regex.Match(text2, "<span class=\"country_name\">(.*?)</span>").Groups[1].Value.ToString();
+                                //-------------------
+                                Console.Write("[+] " + Proxies.Value, Color.White);
+                                Console.Write(" Status: ");
+                                Console.Write("Good ", Color.Green);
+                                Console.Write(" - Location: ");
+                                Console.WriteLine(location, Color.Green);
+                                //-------------------
                                 File.WriteAllText(folder + "\\Proxies-CHECKED-WORKING.txt", Proxies.Value + Environment.NewLine);
                             }
                         }
                         catch(Exception)
                         {
-                            Console.Write("[-] " + Proxies.Value + "\n", Color.Red);
+                            //-------------------
+                            Console.Write("[-] " + Proxies.Value, Color.White);
+                            Console.Write(" Status: ");
+                            Console.WriteLine("Failed", Color.DarkRed);
+                            //-------------------
                             File.WriteAllText(folder + "\\Proxies-CHECKED-SHIT.txt", Proxies.Value + Environment.NewLine);
                         }
        
@@ -112,7 +91,9 @@ namespace Proxiessourcecode
 
 
             }
+            Console.WriteLine("Done", Color.Green);
             Console.ReadLine();
+            Environment.Exit(1);
 
         }
     }
