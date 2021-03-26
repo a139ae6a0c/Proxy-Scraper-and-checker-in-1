@@ -33,7 +33,8 @@ namespace Proxiessourcecode
             }
             catch (Exception)
             {
-                Console.WriteLine("Failed to start RPC!!");
+                Console.WriteLine("Failed to start RPC!! Press Something to continue");
+                Console.ReadLine();
             }
         }
 
