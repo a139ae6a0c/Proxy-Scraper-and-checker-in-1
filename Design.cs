@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +22,8 @@ ______              _
 \_|  |_|  \___/_/\_\_|\___||___/
      [Created by Vanix#9999]                    
                                 
-", Color.MediumPurple);
+", Color.YellowGreen);
+  Console.WriteLine();
         }
     }
 }
