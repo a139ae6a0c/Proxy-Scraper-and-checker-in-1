@@ -34,6 +34,7 @@ namespace Proxiessourcecode
             Console.Clear();
             // Starting Discord RPC...
             DiscordRPC.RPC();
+            // Checks if Directory exists..
             if (!Directory.Exists("Results"))
             {
                 Directory.CreateDirectory("Results");
