@@ -1,6 +1,9 @@
 # Proxy-Scraper/checker in 1
 
 The program can be slow!!
+
+I am still working on it. So except some updates in the future!
+
 ## DLLS
 ###### https://github.com/csharp-leaf/Leaf.xNet
 ###### https://github.com/tomakita/Colorful.Console
