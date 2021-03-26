@@ -44,8 +44,6 @@ namespace Proxiessourcecode
                 }
                 try
                 {
-
-
                     foreach (object val in new Regex("(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})(?=[^\\d])\\s*:?\\s*(\\d{2,5})").Matches(req))
                     {
                         Match Proxies = (Match)val;
