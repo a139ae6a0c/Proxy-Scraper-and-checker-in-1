@@ -20,7 +20,7 @@ namespace Proxiessourcecode
                discordRpcClient.SetPresence(new RichPresence
                 {
                     Details = "Proxies - Created by Vanix#9999",
-                    State = "Scraping/Checking..",
+                    State = Startup.checker.ToLower().Replace("on", "Scraping and checking..").Replace("off", "Scraping...").ToString(),
                     Timestamps = Timestamps.Now,
                     Assets = new Assets
                     {
@@ -33,7 +33,7 @@ namespace Proxiessourcecode
             }
             catch (Exception)
             {
-                Console.WriteLine("Failed to start RPC!! Press Something to continue");
+                Console.WriteLine("Failed to start RPC!! Press enter to continue");
                 Console.ReadLine();
             }
         }
