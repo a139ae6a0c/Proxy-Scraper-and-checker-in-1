@@ -21,4 +21,8 @@ I am still working on it. So except some updates in the future!
 
 ## PREVIEW
 
-![alt text](https://cdn.discordapp.com/attachments/798475727829598228/825114360081809428/AWN4kwtvCqw3AAAAAElFTkSuQmCC.png)
+###### With Checker on:
+![alt text](https://cdn.discordapp.com/attachments/798475727829598228/825361006267465758/6EZh1RQYBNSAAAAAElFTkSuQmCC.png)
+
+###### With Checker off:
+![alt text](https://cdn.discordapp.com/attachments/798475727829598228/825361028660461589/Prrr8N4i9xTHwKtViu56v8BapUyxOjLOiEAAAAASUVORK5CYII.png)
