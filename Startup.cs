@@ -8,6 +8,8 @@ using System.Threading;
 using System.Drawing;
 using Colorful;
 using Console = Colorful.Console;
+using System.Text.RegularExpressions;
+using Leaf.xNet;
 
 
 
@@ -15,6 +17,11 @@ namespace Proxiessourcecode
 {
     class Startup
     {
+        public static string checker = "";
+        public static string color = "";
+        public static string configdefault;
+
+
         public static void start(string[] args)
         {
             for (; ; )
@@ -27,14 +34,11 @@ namespace Proxiessourcecode
                     break;
 
                 }
-                Console.WriteLine("Unknown type.. Please try again.");
-                Thread.Sleep(500);
+                Console.WriteLine("Unknown type..");
+                Thread.Sleep(100);
                 Program.Main(args);
             }
             Console.Clear();
-            // Starting Discord RPC...
-            DiscordRPC.RPC();
-            // Checks if Directory exists..
             if (!Directory.Exists("Results"))
             {
                 Directory.CreateDirectory("Results");
@@ -50,6 +54,40 @@ namespace Proxiessourcecode
                 var file = File.Create("Proxy.txt");
                 file.Close();
             }
+
+            if (!File.Exists("Config.json"))
+            {
+                var httpRequest = new Leaf.xNet.HttpRequest();
+                configdefault = httpRequest.Get("https://pastebin.com/raw/ANYNjMVH", null).ToString();
+                var file = File.Create("Config.json");
+                file.Close();
+                using (StreamWriter writer = new StreamWriter("Config.json"))
+                {
+                    writer.Write(configdefault);
+                }
+            }
+            // We are using Regex for the Config.json because i am a retard.
+            Regex Checker = new Regex("  \"Checker\":\"(.*?)\",");
+            Regex Colors = new Regex("  \"Color\":\"(.*?)\",");
+            using (StreamReader r = new StreamReader("Config.json"))
+            {
+                string line;
+                while ((line = r.ReadLine()) != null)
+                {
+                    Match Checker_match = Checker.Match(line);
+                    Match Colors_match = Colors.Match(line);
+                    if (Checker_match.Success)
+                    {
+                        checker = Checker_match.Groups[1].Value;
+                    }
+                    if (Colors_match.Success)
+                    {
+                        color = Colors_match.Groups[1].Value;
+                    }
+                }
+            }
+            // Starting Discord RPC...
+            DiscordRPC.RPC();
             // Check if the proxy.txt contains something..
             if (new FileInfo("Proxy.txt").Length == 0)
             {
@@ -58,7 +96,6 @@ namespace Proxiessourcecode
                 Console.ReadLine();
                 Environment.Exit(1);
             }
-
         }
     }
 }
