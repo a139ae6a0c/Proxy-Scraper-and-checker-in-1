@@ -29,7 +29,6 @@ namespace Proxiessourcecode
             Startup.start(args);
             // Write Logo on the console  
             check_if_its_on = Startup.checker.ToLower().Contains("on");
-            Console.WriteLine(Startup.checker.ToLower());
             Design.Logo();
             Console.WriteLine("!! All of your Proxies sources should be in Proxy.txt !!");
             if (check_if_its_on)
