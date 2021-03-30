@@ -20,7 +20,7 @@ namespace Proxiessourcecode
         public static string checker = "";
         public static string color = "";
         public static string configdefault;
-
+        public static string Failed_WriteOn_Console = "";
 
         public static void start(string[] args)
         {
@@ -58,7 +58,7 @@ namespace Proxiessourcecode
             if (!File.Exists("Config.json"))
             {
                 var httpRequest = new Leaf.xNet.HttpRequest();
-                configdefault = httpRequest.Get("https://pastebin.com/raw/ANYNjMVH", null).ToString();
+                configdefault = httpRequest.Get("https://pastebin.com/raw/mWeWeiQu", null).ToString();
                 var file = File.Create("Config.json");
                 file.Close();
                 using (StreamWriter writer = new StreamWriter("Config.json"))
@@ -69,6 +69,7 @@ namespace Proxiessourcecode
             // We are using Regex for the Config.json because i am a retard.
             Regex Checker = new Regex("  \"Checker\":\"(.*?)\",");
             Regex Colors = new Regex("  \"Color\":\"(.*?)\",");
+            Regex Failed_Console = new Regex("  \"Write Failed_hits on console\":\"(.*?)\",")
             using (StreamReader r = new StreamReader("Config.json"))
             {
                 string line;
@@ -76,6 +77,7 @@ namespace Proxiessourcecode
                 {
                     Match Checker_match = Checker.Match(line);
                     Match Colors_match = Colors.Match(line);
+                    Match Failed_Console_Match = Failed_Console.Match(line)
                     if (Checker_match.Success)
                     {
                         checker = Checker_match.Groups[1].Value;
@@ -83,6 +85,10 @@ namespace Proxiessourcecode
                     if (Colors_match.Success)
                     {
                         color = Colors_match.Groups[1].Value;
+                    }
+                    if (Failed_Console_Match.Success)
+                    { 
+                        Failed_WriteOn_Console = Failed.Console.Match.Groups[1].Value;
                     }
                 }
             }
