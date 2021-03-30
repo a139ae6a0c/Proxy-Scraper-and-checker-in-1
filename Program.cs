@@ -103,6 +103,8 @@ namespace Proxiessourcecode
                                 }
                                 catch (Exception)
                                 {
+                                    if (Startup.Failed_WriteOn_Console.ToLower().Contains("on"))
+                                    {
                                     //-------------------
                                     Console.Write("[");
                                     Console.Write("-", Color.DarkRed);
@@ -111,6 +113,7 @@ namespace Proxiessourcecode
                                     Console.Write(" Status: ");
                                     Console.WriteLine("Failed", Color.DarkRed);
                                     //-------------------
+                                    }
                                     File.AppendAllText(folder + "\\Proxies-CHECKED-SHIT.txt", Proxies.Value + "\n");
                                 }
                             }
