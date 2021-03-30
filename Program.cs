@@ -50,6 +50,8 @@ namespace Proxiessourcecode
                 }
                 catch (Exception)
                 {
+                    Console.WriteLine("Failed to get url: " + line, Color.DarkRed);
+                    
                 }
                     if (check_if_its_on)
                     {
