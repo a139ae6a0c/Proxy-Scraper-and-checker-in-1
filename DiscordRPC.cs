@@ -29,12 +29,13 @@ namespace Proxiessourcecode
                         SmallImageKey = "logo",
                         SmallImageText = "Url: " + count,
                     }
+                    console.WriteLine("RPC Started");
                 });
             }
             catch (Exception)
             {
                 Console.WriteLine("Failed to start RPC!! Press enter to continue");
-                Console.ReadLine();
+                Console.WritLine("RPC FAILED!!!");
             }
         }
 
