@@ -2,8 +2,6 @@
 
 The program can be slow!!
 
-I am still working on it. So except some updates in the future!
-
 Hours worked on: 3 hours
 
 ## DLLS
