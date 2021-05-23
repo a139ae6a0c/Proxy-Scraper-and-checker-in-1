@@ -22,8 +22,19 @@ namespace Proxiessourcecode
         public static string location = "";
         public static string region = "";
         public static bool check_if_its_on;
+        public static string version = "3.9.0.0";
+
         public static void Main(string[] args)
         {
+            var web = new System.Net.WebClient();
+            string version_web = web.DownloadString("https://raw.githubusercontent.com/Vanix-k3rnel/Proxy-Scraper-and-checker-in-1/main/version.txt");
+            if(version == version_web)
+            {
+            }
+            else
+            {
+              Console.WriteLine("Old version!", Color.Tomato);
+            }
             Console.Title = "Proxy scraper/checker - Created by Vanix#9999";
             // Going to Startup.cs
             Startup.start(args);
