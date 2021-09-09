@@ -1,0 +1,15 @@
+C:\Users\Vanix\source\repos\Proxiessourcecode\Proxiessourcecode\obj\Debug\net5.0\Proxiessourcecode.csproj.AssemblyReference.cache
+C:\Users\Vanix\source\repos\Proxiessourcecode\Proxiessourcecode\obj\Debug\net5.0\Proxiessourcecode.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vanix\source\repos\Proxiessourcecode\Proxiessourcecode\obj\Debug\net5.0\Proxiessourcecode.AssemblyInfoInputs.cache
+C:\Users\Vanix\source\repos\Proxiessourcecode\Proxiessourcecode\obj\Debug\net5.0\Proxiessourcecode.AssemblyInfo.cs
+C:\Users\Vanix\source\repos\Proxiessourcecode\Proxiessourcecode\obj\Debug\net5.0\Proxiessourcecode.csproj.CoreCompileInputs.cache
+C:\Users\Vanix\source\repos\Proxiessourcecode\Proxiessourcecode\obj\Debug\net5.0\Proxiessourcecode.genruntimeconfig.cache
+C:\Users\Vanix\source\repos\Proxiessourcecode\Proxiessourcecode\bin\Debug\net5.0\Proxies.exe
+C:\Users\Vanix\source\repos\Proxiessourcecode\Proxiessourcecode\bin\Debug\net5.0\Proxies.deps.json
+C:\Users\Vanix\source\repos\Proxiessourcecode\Proxiessourcecode\bin\Debug\net5.0\Proxies.runtimeconfig.json
+C:\Users\Vanix\source\repos\Proxiessourcecode\Proxiessourcecode\bin\Debug\net5.0\Proxies.runtimeconfig.dev.json
+C:\Users\Vanix\source\repos\Proxiessourcecode\Proxiessourcecode\bin\Debug\net5.0\Proxies.dll
+C:\Users\Vanix\source\repos\Proxiessourcecode\Proxiessourcecode\bin\Debug\net5.0\Proxies.pdb
+C:\Users\Vanix\source\repos\Proxiessourcecode\Proxiessourcecode\obj\Debug\net5.0\Proxies.dll
+C:\Users\Vanix\source\repos\Proxiessourcecode\Proxiessourcecode\obj\Debug\net5.0\Proxies.pdb
+C:\Users\Vanix\source\repos\Proxiessourcecode\Proxiessourcecode\obj\Debug\net5.0\Proxiessourcecode.csproj.Fody.CopyLocal.cache
