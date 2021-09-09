@@ -1,5 +1,7 @@
 # Proxy-Scraper/checker in 1
 
+# NEED HELP? CREATE PULL REQUEST
+
 The program can be slow!!
 
 Hours worked on: 3 hours
