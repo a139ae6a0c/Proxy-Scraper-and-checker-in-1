@@ -58,7 +58,7 @@ namespace Proxiessourcecode
             if (!File.Exists("Config.json"))
             {
                 var httpRequest = new Leaf.xNet.HttpRequest();
-                configdefault = httpRequest.Get("https://pastebin.com/raw/mWeWeiQu", null).ToString();
+                configdefault = httpRequest.Get("https://data.vanix.site/TKtmyfKCgy7R7uvh.html", null).ToString();
                 var file = File.Create("Config.json");
                 file.Close();
                 using (StreamWriter writer = new StreamWriter("Config.json"))
@@ -98,7 +98,7 @@ namespace Proxiessourcecode
             if (new FileInfo("Sources.txt").Length == 0)
             {
                 Console.Clear();
-                Console.WriteLine("File is empty!! Press enter to close the program...", Color.Red);
+                Console.WriteLine("File is empty!! Press enter to close the program...", Color.DarkMagenta);
                 Console.ReadLine();
                 Environment.Exit(1);
             }

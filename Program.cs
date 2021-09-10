@@ -39,6 +39,7 @@ namespace Proxiessourcecode
                 Console.Write("] ");
                 Console.Write(" Status: ");
                 Console.WriteLine("On ", Color.Green);
+                Console.WriteLine();
             }
             else
             {
@@ -47,11 +48,13 @@ namespace Proxiessourcecode
                 Console.Write("] ");
                 Console.Write(" Status: ");
                 Console.WriteLine("Off ", Color.Red);
+                Console.WriteLine();
             }
+            int count = 0;
             foreach (string line in File.ReadLines("Sources.txt"))
             {
                 string req = "";
-                Console.Title = "[Proxy scraper/checker] - Url: " + line + " - Created by Vanix#9999";
+                Console.Title = $"[Proxy scraper/checker] - Url:  {line} - Counter: {count} - Created by Vanix#9999";
                 var httpRequest = new Leaf.xNet.HttpRequest();
                 try
                 {
@@ -96,7 +99,7 @@ namespace Proxiessourcecode
                                     region = Regex.Match(text2, "\"regionName\":\"(.*?)\"").Groups[1].Value.ToString();
                                     //-------------------
                                     Console.Write("[");
-                                    Console.Write("+", Color.DarkGreen);
+                                    Console.Write("+", Color.FromName(Startup.color));
                                     Console.Write("] ");
                                     Console.Write(Proxies.Value, Color.White);
                                     Console.Write(" Status: ");
@@ -134,12 +137,13 @@ namespace Proxiessourcecode
                 {
                     try
                     {
+                        count++;
                         foreach (object val in new Regex("(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})(?=[^\\d])\\s*:?\\s*(\\d{2,5})").Matches(req))
                         {
                             Match Proxies = (Match)val;
-                            File.AppendAllText(folder + "\\Mixed proxies.txt", Proxies.Value + "\n");
+                            File.AppendAllText(folder + "\\All proxies.txt", Proxies.Value + "\n");
                             Console.Write("[");
-                            Console.Write("+", Color.DarkGreen);
+                            Console.Write("+", Color.FromName(Startup.color));
                             Console.Write("] ");
                             Console.WriteLine(Proxies.Value, Color.White);
                         }
