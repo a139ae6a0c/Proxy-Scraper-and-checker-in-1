@@ -1,6 +1,6 @@
 # Proxy-Scraper/checker in 1
 
-# NEED HELP? CREATE PULL REQUEST
+# NEED HELP? CREATE ISSUES
 
 The program can be slow!!
 
