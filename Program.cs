@@ -26,7 +26,7 @@ namespace Proxiessourcecode
         public static void Main(string[] args)
         {
             var web = new System.Net.WebClient();
-            Console.Title = "[Proxy scraper/checker] - Created by Vanix#9999";
+            Console.Title = "[Proxy scraper/checker] - Created by Vanix#2014";
             // Going to Startup.cs
             Startup.start(args);
             // Write Logo on the console  
