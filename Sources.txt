@@ -1,4 +1,3 @@
----------NOT MY SOURCES!!---------
 http://proxy-daily.com/proxy/getproxymanual.php?limit=50000&filter=socks5
 http://proxy-daily.com/proxy/getproxymanual.php?limit=50000&filter=socks4
 https://premproxy.com/socks-list/ip-port/4.htm
