@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DiscordRPC;
 using System.IO;
+using Colorful;
+using System.Drawing;
 
 namespace Proxiessourcecode
 {
@@ -33,7 +35,7 @@ namespace Proxiessourcecode
             }
             catch (Exception)
             {
-                Console.WriteLine("[DISCORD-RPC] FAILED TO START");
+                Colorful.Console.WriteLine("[ DISCORD-RPC FAILED]", Color.Red)
             }
         
         }
