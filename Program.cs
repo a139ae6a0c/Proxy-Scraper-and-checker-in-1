@@ -26,7 +26,7 @@ namespace Proxiessourcecode
         public static void Main(string[] args)
         {
             var web = new System.Net.WebClient();
-            Console.Title = "[Proxy scraper/checker] - Created by Vanix#2014";
+            Console.Title = "[Proxy scraper and checker] - Created by Vanix#2014";
             // Going to Startup.cs
             Startup.start(args);
             // Write Logo on the console  
@@ -93,21 +93,25 @@ namespace Proxiessourcecode
                                 httpRequest.UserAgent = Http.ChromeUserAgent();
                                 string text2 = httpRequest.Get("http://ip-api.com/json/", null).ToString();
                                 string region = "";
+                                string isp = string.empty;
                                 if (text2.Contains("\"status\":\"success\""))
                                 {
                                     location = Regex.Match(text2, "\"countryCode\":\"(.*?)\"").Groups[1].Value.ToString();
                                     region = Regex.Match(text2, "\"regionName\":\"(.*?)\"").Groups[1].Value.ToString();
+                                    isp = Regex.Match(text2, "\"isp\":\"(.*?)\"").Groups[1].Value.ToString();
                                     //-------------------
                                     Console.Write("[");
                                     Console.Write("+", Color.FromName(Startup.color));
                                     Console.Write("] ");
                                     Console.Write(Proxies.Value, Color.White);
                                     Console.Write(" Status: ");
-                                    Console.Write("Good ", Color.Green);
+                                    Console.Write("Success ", Color.Green);
                                     Console.Write(" - Location: ");
                                     Console.Write(location, Color.Green);
                                     Console.Write(" - Region: ");
-                                    Console.WriteLine(region, Color.Green);
+                                    Console.Write(region, Color.Green);
+                                    Console.Write(" - Isp: ");
+                                    Console.WriteLine(isp, Color.Green);
                                     //-------------------
                                     File.AppendAllText(folder + "\\Good proxies.txt", Proxies.Value + "\n");
                                 }
