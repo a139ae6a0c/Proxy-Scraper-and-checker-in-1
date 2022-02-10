@@ -98,9 +98,14 @@ namespace Proxiessourcecode
             if (new FileInfo("Sources.txt").Length == 0)
             {
                 Console.Clear();
-                Console.WriteLine("File is empty!! Press enter to close the program...", Color.DarkMagenta);
-                Console.ReadLine();
-                Environment.Exit(1);
+                Console.WriteLine("File is empty!! [ DOWNLOADING DEFAULT SOURCE ] ", Color.DarkMagenta);
+                var httpRequest = new Leaf.xNet.HttpRequest();
+                string default = httpRequest.get("https://raw.githubusercontent.com/Vanix-k3rnel/Proxy-Scraper-and-checker-in-1/main/Sources.txt").toString();
+                using (Streamwriter stream = new stream("Sources.txt"))
+                {
+                   stream.Write(default);
+                }
+               Startup.starter(args);
             }
         }
     }
