@@ -101,7 +101,7 @@ namespace Proxiessourcecode
                 Console.WriteLine("File is empty!! [ DOWNLOADING DEFAULT SOURCE ] ", Color.DarkMagenta);
                 var httpRequest = new Leaf.xNet.HttpRequest();
                 string default = httpRequest.get("https://raw.githubusercontent.com/Vanix-k3rnel/Proxy-Scraper-and-checker-in-1/main/Sources.txt").toString();
-                using (Streamwriter stream = new stream("Sources.txt"))
+                using (Streamwriter stream = new StreamWriter("Sources.txt"))
                 {
                    stream.Write(default);
                 }
